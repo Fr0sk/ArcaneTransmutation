@@ -3,7 +3,8 @@
     "textures": {
         "0": "ksyn_at:blocks/chest/chestSide",
         "1": "ksyn_at:blocks/chest/chestTop",
-        "2": "ksyn_at:blocks/chest/chestLock"
+        "2": "ksyn_at:blocks/chest/chestLock",
+        "particle": "ksyn_at:blocks/alchemyDesk"
     },
     "elements": [
         {
