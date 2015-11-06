@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirectional
+public class BlockAlchemyDesk extends CustomBlockDirectional implements ICustomBlockDirectional
 {
     public static final PropertyBool MAIN = PropertyBool.create("main");
     public static final PropertyEnum PART = PropertyEnum.create("part", BlockAlchemyDesk.EnumPartType.class);
@@ -51,9 +51,15 @@ public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirecti
     }
 
     @Override
+    public Block getBlock()
+    {
+        return this;
+    }
+
+    @Override
     public void addBlockRecipes()
     {
-        ItemStack alchemyTableStack = new ItemStack(ModBlocks.alchemyDesk, 1);
+        ItemStack alchemyTableStack = new ItemStack(ModBlocks.alchemyDesk.getBlock(), 1);
         Object[] recipe = new Object[]{
                 "CBT",
                 "SWS",
@@ -100,30 +106,30 @@ public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirecti
     public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
         // Place Center Block
-        worldIn.setBlockState(pos.offset(placer.getHorizontalFacing()), ModBlocks.alchemyDesk.getDefaultState()
+        worldIn.setBlockState(pos.offset(placer.getHorizontalFacing()), ModBlocks.alchemyDesk.getBlock().getDefaultState()
                 .withProperty(MAIN, false)
                 .withProperty(FACING, placer.getHorizontalFacing())
                 .withProperty(PART, EnumPartType.CENTER));
 
         // Place Right Block
-        worldIn.setBlockState(pos.offset(placer.getHorizontalFacing(), 2), ModBlocks.alchemyDesk.getDefaultState()
+        worldIn.setBlockState(pos.offset(placer.getHorizontalFacing(), 2), ModBlocks.alchemyDesk.getBlock().getDefaultState()
                 .withProperty(MAIN, false)
                 .withProperty(FACING, placer.getHorizontalFacing())
                 .withProperty(PART, EnumPartType.RIGHT));
 
         // Place Chest block
-        worldIn.setBlockState(pos.offset(EnumFacing.UP), ModBlocks.alchemyDesk.getDefaultState()
+        worldIn.setBlockState(pos.offset(EnumFacing.UP), ModBlocks.alchemyDesk.getBlock().getDefaultState()
                 .withProperty(MAIN, false)
                 .withProperty(FACING, placer.getHorizontalFacing())
                 .withProperty(PART, EnumPartType.CHEST));
 
         // Place Crafting Block
-        worldIn.setBlockState(pos.offset(EnumFacing.UP).offset(placer.getHorizontalFacing(), 2), ModBlocks.alchemyDesk.getDefaultState()
+        worldIn.setBlockState(pos.offset(EnumFacing.UP).offset(placer.getHorizontalFacing(), 2), ModBlocks.alchemyDesk.getBlock().getDefaultState()
                 .withProperty(MAIN, false)
                 .withProperty(FACING, placer.getHorizontalFacing())
                 .withProperty(PART, EnumPartType.CRAFTING_TABLE));
 
-        return ModBlocks.alchemyDesk.getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
+        return ModBlocks.alchemyDesk.getBlock().getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
     }
 
     @Override
@@ -172,7 +178,7 @@ public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirecti
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return Item.getItemFromBlock(ModBlocks.alchemyDesk);
+        return Item.getItemFromBlock(ModBlocks.alchemyDesk.getBlock());
     }
 
     @Override
@@ -243,7 +249,7 @@ public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirecti
     }
 
     @Override
-    protected BlockState createBlockState()
+    public BlockState createBlockState()
     {
         IProperty[] properties = new IProperty[]{FACING, PART, MAIN};
         return new BlockState(this, properties);
