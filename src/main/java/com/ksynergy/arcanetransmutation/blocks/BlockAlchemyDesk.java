@@ -39,7 +39,7 @@ public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirecti
         super(materialIn);
         this.setDefaultState(this.blockState.getBaseState()
                 .withProperty(PART, EnumPartType.LEFT)
-                .withProperty(MAIN, Boolean.valueOf(true)));
+                .withProperty(MAIN, true));
 
         ModelLoader.setCustomStateMapper(this, new StateMap.Builder().addPropertiesToIgnore(MAIN).build());
     }
@@ -101,25 +101,25 @@ public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirecti
     {
         // Place Center Block
         worldIn.setBlockState(pos.offset(placer.getHorizontalFacing()), ModBlocks.alchemyDesk.getDefaultState()
-                .withProperty(MAIN, Boolean.valueOf(false))
+                .withProperty(MAIN, false)
                 .withProperty(FACING, placer.getHorizontalFacing())
                 .withProperty(PART, EnumPartType.CENTER));
 
         // Place Right Block
         worldIn.setBlockState(pos.offset(placer.getHorizontalFacing(), 2), ModBlocks.alchemyDesk.getDefaultState()
-                .withProperty(MAIN, Boolean.valueOf(false))
+                .withProperty(MAIN, false)
                 .withProperty(FACING, placer.getHorizontalFacing())
                 .withProperty(PART, EnumPartType.RIGHT));
 
         // Place Chest block
         worldIn.setBlockState(pos.offset(EnumFacing.UP), ModBlocks.alchemyDesk.getDefaultState()
-                .withProperty(MAIN, Boolean.valueOf(false))
+                .withProperty(MAIN, false)
                 .withProperty(FACING, placer.getHorizontalFacing())
                 .withProperty(PART, EnumPartType.CHEST));
 
         // Place Crafting Block
         worldIn.setBlockState(pos.offset(EnumFacing.UP).offset(placer.getHorizontalFacing(), 2), ModBlocks.alchemyDesk.getDefaultState()
-                .withProperty(MAIN, Boolean.valueOf(false))
+                .withProperty(MAIN, false)
                 .withProperty(FACING, placer.getHorizontalFacing())
                 .withProperty(PART, EnumPartType.CRAFTING_TABLE));
 
@@ -165,6 +165,8 @@ public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirecti
         {
             worldIn.setBlockToAir(blockPos);
         }
+
+        this.dropBlockAsItem(worldIn, pos, state, 0);
     }
 
     @Override
@@ -243,7 +245,8 @@ public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirecti
     @Override
     protected BlockState createBlockState()
     {
-        return new BlockState(this, new IProperty[]{FACING, PART, MAIN});
+        IProperty[] properties = new IProperty[]{FACING, PART, MAIN};
+        return new BlockState(this, properties);
     }
 
     public enum EnumPartType implements IStringSerializable
@@ -256,7 +259,7 @@ public class BlockAlchemyDesk extends CustomBlock implements ICustomBlockDirecti
 
         private final String name;
 
-        private EnumPartType(String name)
+        EnumPartType(String name)
         {
             this.name = name;
         }
