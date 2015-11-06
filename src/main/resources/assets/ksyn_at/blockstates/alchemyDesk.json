@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=north,part=left": { "model": "ksyn_at:alchemyDeskLeft" },
+    "facing=east,part=left":  { "model": "ksyn_at:alchemyDeskLeft", "y": 90 },
+    "facing=south,part=left": { "model": "ksyn_at:alchemyDeskLeft", "y": 180 },
+    "facing=west,part=left":  { "model": "ksyn_at:alchemyDeskLeft", "y": 270 },
+
+    "facing=north,part=center": { "model": "ksyn_at:alchemyDeskCenter" },
+    "facing=east,part=center":  { "model": "ksyn_at:alchemyDeskCenter", "y": 90 },
+    "facing=south,part=center": { "model": "ksyn_at:alchemyDeskCenter", "y": 180 },
+    "facing=west,part=center":  { "model": "ksyn_at:alchemyDeskCenter", "y": 270 },
+
+    "facing=north,part=right": { "model": "ksyn_at:alchemyDeskRight" },
+    "facing=east,part=right":  { "model": "ksyn_at:alchemyDeskRight", "y": 90 },
+    "facing=south,part=right": { "model": "ksyn_at:alchemyDeskRight", "y": 180  },
+    "facing=west,part=right":  { "model": "ksyn_at:alchemyDeskRight", "y": 270 },
+
+    "facing=north,part=chest": { "model": "ksyn_at:alchemyDeskChest" },
+    "facing=east,part=chest":  { "model": "ksyn_at:alchemyDeskChest", "y": 90 },
+    "facing=south,part=chest": { "model": "ksyn_at:alchemyDeskChest", "y": 180  },
+    "facing=west,part=chest":  { "model": "ksyn_at:alchemyDeskChest", "y": 270 },
+
+    "facing=north,part=crafting_table": { "model": "ksyn_at:alchemyDeskCraftingTable" },
+    "facing=east,part=crafting_table":  { "model": "ksyn_at:alchemyDeskCraftingTable", "y": 90 },
+    "facing=south,part=crafting_table": { "model": "ksyn_at:alchemyDeskCraftingTable", "y": 180  },
+    "facing=west,part=crafting_table":  { "model": "ksyn_at:alchemyDeskCraftingTable", "y": 270 }
+  }
+}
