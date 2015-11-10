@@ -245,7 +245,7 @@ public class BlockAlchemyDesk extends CustomBlockDirectional implements ICustomB
         if (worldIn.getBlockState(posCraftingBlock).getBlock() == this && (Boolean)worldIn.getBlockState(posCraftingBlock).getValue(MAIN))
             return state.withProperty(PART, EnumPartType.CRAFTING_TABLE);
 
-        return state;
+        return state.withProperty(PART, EnumPartType.CENTER);
     }
 
     @Override
